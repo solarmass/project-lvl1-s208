@@ -1,6 +1,6 @@
 {
   "name": "brain-games-solarmass",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "bin": {
     "brain-games": "dist/bin/brain-games.js"
@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/solarmass/project-lvl1-s208/issues"
   },
-  "homepage": "https://github.com/solarmass/project-lvl1-s208#readme"
+  "homepage": "https://github.com/solarmass/project-lvl1-s208#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.7"
+  }
 }
