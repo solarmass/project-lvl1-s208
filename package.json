@@ -1,0 +1,29 @@
+{
+  "name": "brain-games-solarmass",
+  "version": "1.0.2",
+  "description": "",
+  "bin": {
+    "brain-games": "dist/bin/brain-games.js"
+  },
+  "devDependencies": {
+    "babel-cli": "*",
+    "babel-core": "*",
+    "babel-preset-env": "*",
+    "babel-preset-stage-0": "*"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
+    "prepublishOnly": "npm run build",
+    "babel-node": "babel-node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/solarmass/project-lvl1-s208.git"
+  },
+  "author": "solarmass",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/solarmass/project-lvl1-s208/issues"
+  },
+  "homepage": "https://github.com/solarmass/project-lvl1-s208#readme"
+}
