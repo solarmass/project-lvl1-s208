@@ -1,12 +1,5 @@
 import { getRandomInt, greetUser, askUser, reportWinning, reportLosing } from '../common';
 
-const checkAnswer = (number, answer) => {
-  const isEval = !(+number % 2);
-  const answerInLower = answer.toLowerCase();
-
-  return (isEval && answerInLower === 'yes') || (!isEval && answerInLower === 'no');
-};
-
 const processGame = (roundsCount, rangeFrom, rangeTo) => {
   console.log('Answer "yes" if number even otherwise answer "no".\n');
 
@@ -18,11 +11,11 @@ const processGame = (roundsCount, rangeFrom, rangeTo) => {
 
     console.log(`Question: ${number} `);
 
-    const answer = askUser('Your answer: ');
-    const result = checkAnswer(number, answer);
+    const answer = askUser('Your answer: ').toLowerCase();
+    const correctAnswer = +number % 2 ? 'no' : 'yes';
 
-    if (!result) {
-      console.log("'yes' is wrong answer ;(. Correct answer was 'no'.");
+    if (answer !== correctAnswer) {
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
 
       return false;
     }
