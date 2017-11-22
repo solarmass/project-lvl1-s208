@@ -1,10 +1,14 @@
 {
   "name": "brain-games-solarmass",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "bin": {
-    "brain-games": "dist/bin/brain-games.js"
+    "brain-games": "dist/bin/brain-games.js",
+    "brain-even": "dist/bin/brain-even.js"
   },
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "babel-cli": "*",
     "babel-core": "*",
