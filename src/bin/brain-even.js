@@ -3,4 +3,4 @@ import processGame from '../games-logic/even';
 import { printWelcome } from '../common';
 
 printWelcome();
-processGame(3, 0, 100);
+processGame(3);

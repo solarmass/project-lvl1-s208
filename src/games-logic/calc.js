@@ -1,6 +1,9 @@
 import { cons, car, cdr } from 'hexlet-pairs';
-import { getRandomInt, greetUser, askUser, reportWinning, reportLosing } from '../common';
+import { getRandomInt } from '../common';
+import getProcessGame from '../processors/game-processor';
+import getProcessRounds from '../processors/rounds-processor';
 
+const gameTask = 'What is the result of the expression?\n';
 
 const add = cons('+', (a, b) => a + b);
 
@@ -26,40 +29,26 @@ const getRandomOperation = () => {
   return add;
 };
 
+const getExecWithData = () => {
+  const operation = getRandomOperation();
+  const a = getOperand();
+  const b = getOperand();
+
+  return func => func(a, b, operation);
+};
+
+const getQuestion = (a, b, operation) => {
+  const operator = getOperator(operation);
+
+  return `${a} ${operator} ${b}`;
+};
+
+const getAnswer = (a, b, operation) => execute(operation, a, b);
+
 const processGame = (roundsCount) => {
-  console.log('What is the result of the expression?\n');
+  const processRounds = getProcessRounds(getExecWithData, getQuestion, getAnswer);
 
-  const name = greetUser();
-
-  const processRounds = (roundsLast) => {
-    const operation = getRandomOperation();
-    const operator = getOperator(operation);
-    const a = getOperand();
-    const b = getOperand();
-
-    console.log(`Question: ${a} ${operator} ${b}`);
-
-    const answer = askUser('Your answer: ').toLowerCase();
-    const correctAnswer = execute(operation, a, b);
-
-    if (+answer !== correctAnswer) {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-
-      return false;
-    }
-
-    console.log('Correct!');
-
-    return roundsLast <= 1 ? true : processRounds(roundsLast - 1);
-  };
-
-  const success = processRounds(roundsCount);
-
-  if (success) {
-    reportWinning(name);
-  } else {
-    reportLosing(name);
-  }
+  getProcessGame(gameTask, processRounds)(roundsCount);
 };
 
 export default processGame;

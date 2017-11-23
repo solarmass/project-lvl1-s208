@@ -1,37 +1,31 @@
-import { getRandomInt, greetUser, askUser, reportWinning, reportLosing } from '../common';
+import { getRandomInt } from '../common';
+import getProcessGame from '../processors/game-processor';
+import getProcessRounds from '../processors/rounds-processor';
 
-const processGame = (roundsCount, rangeFrom, rangeTo) => {
-  console.log('Answer "yes" if number even otherwise answer "no".\n');
+const getExecWithData = () => {
+  const number = getRandomInt(0, 100);
 
-  const getNumber = () => getRandomInt(rangeFrom, rangeTo);
-  const name = greetUser();
+  return func => func(number);
+};
 
-  const processRounds = (roundsLast) => {
-    const number = getNumber();
+const getQuestion = number => `${number}`;
 
-    console.log(`Question: ${number} `);
+const isEval = number => !(+number % 2);
 
-    const answer = askUser('Your answer: ').toLowerCase();
-    const correctAnswer = +number % 2 ? 'no' : 'yes';
-
-    if (answer !== correctAnswer) {
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-
-      return false;
-    }
-
-    console.log('Correct!');
-
-    return roundsLast <= 1 ? true : processRounds(roundsLast - 1);
-  };
-
-  const success = processRounds(roundsCount);
-
-  if (success) {
-    reportWinning(name);
-  } else {
-    reportLosing(name);
+const getAnswer = (number) => {
+  if (isEval(number)) {
+    return 'yes';
   }
+
+  return 'no';
+};
+
+const gameTask = 'Answer "yes" if number even otherwise answer "no".\n';
+
+const processGame = (roundsCount) => {
+  const processRounds = getProcessRounds(getExecWithData, getQuestion, getAnswer);
+
+  getProcessGame(gameTask, processRounds)(roundsCount);
 };
 
 export default processGame;
