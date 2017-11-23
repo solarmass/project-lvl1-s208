@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-const getRandomInt = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+const getRandomInt = (min, max) => Math.floor(Math.random() * ((max + 1) - min)) + min;
 
 const askUser = question => readlineSync.question(question);
 
