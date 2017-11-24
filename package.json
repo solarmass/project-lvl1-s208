@@ -1,11 +1,12 @@
 {
   "name": "brain-games-solarmass",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "",
   "bin": {
     "brain-games": "dist/bin/brain-games.js",
     "brain-even": "dist/bin/brain-even.js",
-    "brain-calc": "dist/bin/brain-calc.js"
+    "brain-calc": "dist/bin/brain-calc.js",
+    "brain-calc": "dist/bin/brain-gcd.js"
   },
   "files": [
     "dist"
