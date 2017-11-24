@@ -1,31 +1,21 @@
+import { cons } from 'hexlet-pairs';
 import { getRandomInt } from '../common';
-import getProcessGame from '../processors/game-processor';
-import getProcessRounds from '../processors/rounds-processor';
+import processGame from '../game-processor';
 
-const getExecWithData = () => {
+const isEven = number => !(+number % 2);
+
+const gameTask = 'Answer "yes" if number even otherwise answer "no".';
+
+const getRoundData = () => {
   const number = getRandomInt(0, 100);
+  const question = `${number}`;
+  const answer = isEven(number) ? 'yes' : 'no';
 
-  return func => func(number);
+  return cons(question, answer);
 };
 
-const getQuestion = number => `${number}`;
-
-const isEval = number => !(+number % 2);
-
-const getAnswer = (number) => {
-  if (isEval(number)) {
-    return 'yes';
-  }
-
-  return 'no';
+const process = () => {
+  processGame(gameTask, getRoundData);
 };
 
-const gameTask = 'Answer "yes" if number even otherwise answer "no".\n';
-
-const processGame = (roundsCount) => {
-  const processRounds = getProcessRounds(getExecWithData, getQuestion, getAnswer);
-
-  getProcessGame(gameTask, processRounds)(roundsCount);
-};
-
-export default processGame;
+export default process;

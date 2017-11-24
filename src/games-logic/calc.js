@@ -1,9 +1,8 @@
 import { cons, car, cdr } from 'hexlet-pairs';
 import { getRandomInt } from '../common';
-import getProcessGame from '../processors/game-processor';
-import getProcessRounds from '../processors/rounds-processor';
+import processGame from '../game-processor';
 
-const gameTask = 'What is the result of the expression?\n';
+const gameTask = 'What is the result of the expression?';
 
 const add = cons('+', (a, b) => a + b);
 
@@ -29,26 +28,20 @@ const getRandomOperation = () => {
   return add;
 };
 
-const getExecWithData = () => {
+const getRoundData = () => {
   const operation = getRandomOperation();
   const a = getOperand();
   const b = getOperand();
-
-  return func => func(a, b, operation);
-};
-
-const getQuestion = (a, b, operation) => {
   const operator = getOperator(operation);
 
-  return `${a} ${operator} ${b}`;
+  const question = `${a} ${operator} ${b}`;
+  const answer = execute(operation, a, b);
+
+  return cons(question, answer);
 };
 
-const getAnswer = (a, b, operation) => execute(operation, a, b);
-
-const processGame = (roundsCount) => {
-  const processRounds = getProcessRounds(getExecWithData, getQuestion, getAnswer);
-
-  getProcessGame(gameTask, processRounds)(roundsCount);
+const process = () => {
+  processGame(gameTask, getRoundData);
 };
 
-export default processGame;
+export default process;
