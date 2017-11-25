@@ -2,6 +2,8 @@ import readlineSync from 'readline-sync';
 
 const getRandomInt = (min, max) => Math.floor(Math.random() * ((max + 1) - min)) + min;
 
+const isDivisor = (a, b, divisor) => !(a % divisor) && !(b % divisor);
+
 const askUser = question => readlineSync.question(question);
 
 const greetUser = () => {
@@ -18,4 +20,4 @@ const reportWinning = name => console.log(`Congratulations, ${name}!`);
 
 const reportLosing = name => console.log(`Let's try again, ${name}!`);
 
-export { greetUser, askUser, reportWinning, reportLosing, welcome, getRandomInt };
+export { greetUser, askUser, reportWinning, reportLosing, welcome, getRandomInt, isDivisor };

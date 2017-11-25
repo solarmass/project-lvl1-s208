@@ -1,19 +1,20 @@
 import { cons } from 'hexlet-pairs';
-import { getRandomInt } from '../common';
+import { getRandomInt, isDivisor } from '../common';
 import processGame from '../game-processor';
 
 const gameTask = 'Find the greatest common divisor of given numbers.';
 
-const isDivisor = (a, b, divisor) => !(a % divisor) && !(b % divisor);
-
 const getGcd = (a, b) => {
-  const func = (lastDivisor, numberToCheck) => {
-    const divisor = isDivisor(a, b, numberToCheck) ? numberToCheck : lastDivisor;
+  const divisor = a > b ? b : a;
 
-    return numberToCheck < a && numberToCheck < b ? func(divisor, numberToCheck + 1) : divisor;
+  const func = (numberToCheck) => {
+    if (isDivisor(a, b, numberToCheck) || numberToCheck <= 1) {
+      return numberToCheck;
+    }
+    return func(numberToCheck - 1);
   };
 
-  return func(1, 2);
+  return func(divisor);
 };
 
 const getRoundData = () => {
