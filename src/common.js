@@ -52,6 +52,8 @@ const balanceNumber = (number) => {
 
 const isDivisor = (a, b, divisor) => !(a % divisor) && !(b % divisor);
 
+const isEven = number => !(+number % 2);
+
 const askUser = question => readlineSync.question(question);
 
 const greetUser = () => {
@@ -69,4 +71,4 @@ const reportWinning = name => console.log(`Congratulations, ${name}!`);
 const reportLosing = name => console.log(`Let's try again, ${name}!`);
 
 export { greetUser, askUser, reportWinning, reportLosing, welcome };
-export { getRandomInt, isDivisor, getLengthOfNumber, getSumOfDigits, balanceNumber };
+export { getRandomInt, isEven, isDivisor, getLengthOfNumber, getSumOfDigits, balanceNumber };
