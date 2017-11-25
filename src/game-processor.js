@@ -1,5 +1,5 @@
 import { car, cdr } from 'hexlet-pairs';
-import { greetUser, askUser, reportWinning, reportLosing } from './common';
+import { greetUser, askUser, reportWinning, reportLosing, welcome } from './common';
 
 const getQuestion = roundData => car(roundData);
 
@@ -8,6 +8,7 @@ const getAnswer = roundData => cdr(roundData);
 const roundsCount = 3;
 
 const processGame = (gameTask, getRoundData) => {
+  console.log(welcome);
   console.log(`${gameTask}\n`);
 
   const name = greetUser();

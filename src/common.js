@@ -12,10 +12,10 @@ const greetUser = () => {
   return name;
 };
 
-const printWelcome = () => console.log('Welcome to Brain Games!');
+const welcome = 'Welcome to Brain Games!';
 
 const reportWinning = name => console.log(`Congratulations, ${name}!`);
 
 const reportLosing = name => console.log(`Let's try again, ${name}!`);
 
-export { greetUser, askUser, reportWinning, reportLosing, printWelcome, getRandomInt };
+export { greetUser, askUser, reportWinning, reportLosing, welcome, getRandomInt };
