@@ -1,6 +1,6 @@
 {
   "name": "brain-games-solarmass",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "",
   "bin": {
     "brain-games": "dist/bin/brain-games.js",
