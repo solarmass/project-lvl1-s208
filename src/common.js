@@ -28,6 +28,8 @@ const getSumOfDigits = (number) => {
   return func(number, 0);
 };
 
+const getProgressionMember = (firstMember, n, delta) => firstMember + (delta * (n - 1));
+
 const balanceNumber = (number) => {
   const sum = getSumOfDigits(number);
   const count = getLengthOfNumber(number);
@@ -83,5 +85,5 @@ const reportWinning = name => console.log(`Congratulations, ${name}!`);
 const reportLosing = name => console.log(`Let's try again, ${name}!`);
 
 export { greetUser, askUser, reportWinning, reportLosing, welcome };
-export { getRandomInt, getLengthOfNumber, getSumOfDigits, balanceNumber };
+export { getRandomInt, getLengthOfNumber, getSumOfDigits, balanceNumber, getProgressionMember };
 export { isEven, isPrime, isDivisor };

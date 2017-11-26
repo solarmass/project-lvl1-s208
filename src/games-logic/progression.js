@@ -1,36 +1,30 @@
 import { cons } from 'hexlet-pairs';
-import { getRandomInt } from '../common';
+import { getRandomInt, getProgressionMember } from '../common';
 import processGame from '..';
 
 const gameTask = 'What number is missing in this progression?';
 
 const progLength = 10;
 
-const getProgression = (startPosition, startNumber) => {
+const getRoundData = () => {
+  const first = getRandomInt(1, 50);
   const delta = getRandomInt(2, 5);
+  const mPos = getRandomInt(2, progLength);
 
-  const func = (curPosition, curNumber) => {
-    if (curPosition < 1 || curPosition > progLength) {
-      return '';
+  const func = (n, progression, missing) => {
+    if (n > progLength) {
+      return cons(progression, missing);
     }
-    if (curPosition < startPosition) {
-      return `${func(curPosition - 1, curNumber - delta)}${curNumber} `;
-    }
-    if (curPosition > startPosition) {
-      return ` ${curNumber}${func(curPosition + 1, curNumber + delta)}`;
-    }
-    return `${func(curPosition - 1, curNumber - delta)}..${func(curPosition + 1, curNumber + delta)}`;
+
+    const member = getProgressionMember(first, n, delta);
+    const isMissingPos = n === mPos;
+    const newMissing = isMissingPos ? member : missing;
+    const newProgression = isMissingPos ? `${progression} ..` : `${progression} ${member}`;
+
+    return func(n + 1, newProgression, newMissing);
   };
 
-  return func(startPosition, startNumber);
-};
-
-const getRoundData = () => {
-  const mPos = getRandomInt(1, progLength);
-  const answer = getRandomInt(10, 20);
-  const question = getProgression(mPos, answer);
-
-  return cons(question, answer);
+  return func(2, `${first}`, null);
 };
 
 const process = () => {
