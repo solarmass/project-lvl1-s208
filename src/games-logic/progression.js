@@ -1,6 +1,6 @@
 import { cons } from 'hexlet-pairs';
 import { getRandomInt } from '../common';
-import processGame from '../game-processor';
+import processGame from '..';
 
 const gameTask = 'What number is missing in this progression?';
 

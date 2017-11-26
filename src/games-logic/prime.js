@@ -1,6 +1,6 @@
 import { cons } from 'hexlet-pairs';
 import { getRandomInt, isPrime } from '../common';
-import processGame from '../game-processor';
+import processGame from '..';
 
 const gameTask = 'Is this number prime?';
 

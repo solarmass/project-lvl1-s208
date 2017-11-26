@@ -1,6 +1,6 @@
 import { cons } from 'hexlet-pairs';
 import { getRandomInt, isEven } from '../common';
-import processGame from '../game-processor';
+import processGame from '..';
 
 const gameTask = 'Answer "yes" if number even otherwise answer "no".';
 

@@ -1,6 +1,6 @@
 import { cons } from 'hexlet-pairs';
 import { getRandomInt, isDivisor } from '../common';
-import processGame from '../game-processor';
+import processGame from '..';
 
 const gameTask = 'Find the greatest common divisor of given numbers.';
 

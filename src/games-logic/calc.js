@@ -1,6 +1,6 @@
 import { cons, car, cdr } from 'hexlet-pairs';
 import { getRandomInt } from '../common';
-import processGame from '../game-processor';
+import processGame from '..';
 
 const gameTask = 'What is the result of the expression?';
 

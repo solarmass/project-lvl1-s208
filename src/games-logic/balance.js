@@ -1,6 +1,6 @@
 import { cons } from 'hexlet-pairs';
 import { getRandomInt, balanceNumber } from '../common';
-import processGame from '../game-processor';
+import processGame from '..';
 
 const gameTask = 'Balance the given number.';
 
